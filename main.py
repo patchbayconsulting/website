@@ -65,4 +65,4 @@ def homepage():
             ui.link_target('contact')
             ui.space().classes('h-8')
 
-ui.run(dark=True)
+ui.run(dark=True, port=10000)
