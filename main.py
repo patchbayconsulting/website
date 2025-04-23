@@ -30,7 +30,7 @@ def homepage():
     ui.separator.default_props('color=brand').default_classes('mt-3')
     with ui.header().classes('mt-1'):
         with ui.grid(columns=16).classes('w-full gap-0 h-14 place-items-stretch'):
-            with ui.link():
+            with ui.link(target='#top'):
                 ui.image('/assets/PB_logo.svg').classes('col-span-2 md:col-span-1 h-14').props('fit=scale-down')
             with ui.row().classes('col-span-11 md:col-span-7 lg:col-span-6 place-items-stretch items-center'):
                 with ui.link(target='#what').props('align=left'):
@@ -45,6 +45,7 @@ def homepage():
     with ui.grid(columns=16).classes('w-full gap-0'):
         ui.column().classes('col-span-2 md:col-span-1 p-0 m-0')
         with ui.column().classes('col-span-11 md:col-span-7 lg:col-span-6 p-0'):
+            ui.link_target('top')
             ui.html('patch <br /> bay <br />').classes('text-brand text-8xl md:text-9xl p-0 -ml-1 -mt-4')
             ui.label('Taking the Big out of Tech').classes('text-brand text-lg md:text-3xl mt-8')
             ui.separator()
