@@ -4,9 +4,11 @@ fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"> \
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> \
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">'
 
+app.add_static_files('/assets', './assets')
 
 @ui.page('/')
 def homepage():
+    ui.page_title('patchbay consulting')
     ui.add_head_html(fonts)
     ui.add_css('''
         .sora-400 {
@@ -22,14 +24,14 @@ def homepage():
         --nicegui-default-gap: 0rem;
         }
     ''')
-    app.add_static_files('/assets', './assets')
     ui.colors(primary='black', dark_page='black', brand='#f0DB40')
     ui.query('body').classes('sora-400 p-0 m-0 gap-0 no-wrap')
     ui.button().default_classes('text-xs md:text-base p-1 self-center mt-3 md:mt-2')
     ui.separator.default_props('color=brand').default_classes('mt-3')
-    with ui.header():
+    with ui.header().classes('mt-1'):
         with ui.grid(columns=16).classes('w-full gap-0 h-14 place-items-stretch'):
-            ui.image('/assets/PB_logo.svg').classes('col-span-2 md:col-span-1').props('fit=scale-down')
+            with ui.link():
+                ui.image('/assets/PB_logo.svg').classes('col-span-2 md:col-span-1 h-14').props('fit=scale-down')
             with ui.row().classes('col-span-11 md:col-span-7 lg:col-span-6 place-items-stretch items-center'):
                 with ui.link(target='#what').props('align=left'):
                     ui.button('what')
@@ -66,4 +68,4 @@ def homepage():
             ui.link_target('contact')
             ui.space().classes('h-16')
 
-ui.run(dark=True, port=10000)
+ui.run(dark=True, port=10000, favicon='🎛️')
